@@ -1,4 +1,18 @@
-# How to resume / suspend endpoint via REST API
+---
+title: How to suspend / resume endpoint via REST API - Speech service
+titleSuffix: Azure Cognitive Services
+description: Learn how to suspend or resume endpoint via REST API to saving hosting cost.
+services: cognitive-services
+author: Ling-Cao
+manager: qiliao123
+ms.service: cognitive-services
+ms.subservice: speech-service
+ms.topic: how-to
+ms.date: 12/17/2021
+ms.author: caoling
+---
+
+# How to suspend / resume endpoint via REST API
 
 The endpoint Suspend and Resume functions allows you to flexibly control the endpoint hosting status and save the hosting costs. The charging is stopped once the endpoint is suspended, meanwhile it cannot be used to synthesize speech until you resume it successfully.
 
