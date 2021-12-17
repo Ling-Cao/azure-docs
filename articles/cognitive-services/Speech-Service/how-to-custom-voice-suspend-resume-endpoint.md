@@ -14,10 +14,10 @@ ms.author: caoling
 
 # How to suspend / resume endpoint via REST API
 
-The endpoint Suspend and Resume functions allows you to flexibly control the endpoint hosting status and save the hosting costs. The charging is stopped once the endpoint is suspended, meanwhile it cannot be used to synthesize speech until you resume it successfully.
+The endpoint Suspend and Resume functions allow you to flexibly control the endpoint hosting status and save the hosting costs. The charging is stopped once the endpoint is suspended, meanwhile it cannot be used to synthesize speech until you resume it successfully.
 
 > [!NOTE]
-> The Suspend or Resume operation will take a while to complete, the Suspend time should short and the Resume time should be similar as the Deploy operation.
+> The Suspend or Resume operation will take a while to complete, the Suspend time should be short and the Resume time should be similar as the Deploy operation.
 
 This how-to topic will show you how to suspend or resume a Custom Voice endpoint via REST API.
 
