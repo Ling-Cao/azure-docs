@@ -151,6 +151,8 @@ items:
           href: long-audio-api.md
         - name: Get facial pose events for lip-sync
           href: how-to-speech-synthesis-viseme.md
+        - name: Suspend / Resume endpoint via REST API
+          href: how-to-custom-voice-suspend-resume-endpoint.md
         - name: Customization
           items:
             - name: Custom Neural Voice
