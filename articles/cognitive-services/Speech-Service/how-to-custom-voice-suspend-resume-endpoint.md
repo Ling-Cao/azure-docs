@@ -16,23 +16,23 @@ ms.author: caoling
 
 The endpoint Suspend and Resume functions allow you to flexibly control the endpoint hosting status and save the hosting costs. The charging will stop once the endpoint is suspended, meanwhile it can’t be used to synthesize speech until you resume it successfully.
 
-> [!NOTE]
+> [! NOTE]
 > The Suspend or Resume operation will take a while to complete, the Suspend time should be short and the Resume time should be similar to the deployment time.
 
 This topic will show you how to suspend or resume a Custom Voice endpoint via REST API.
 
-> [!Tip]
+> [! Tip]
 > The endpoint Suspend and Resume functions have been supported on [Speech Studio portal](https://aka.ms/custom-voice-portal) too.
 
 ## Prerequisites
 
 For an existing endpoint you want to suspend or resume, you will need to prepare:
 
-- The identifier of the endpoint.
+* The identifier of the endpoint.
 
-- The Azure region the endpoint is associated with.
+* The Azure region the endpoint is associated with.
 
-- The subscription key the endpoint is associated with.
+* The subscription key the endpoint is associated with.
 
 They can be found in the Sample code section on the endpoint details page at [Speech Studio portal](https://aka.ms/custom-voice-portal) as below:
 
@@ -126,7 +126,7 @@ The definition of status property:
 | `Disabling` | The endpoint is waiting for processing for Deploy, and it's not ready to synthesize speech. |
 | `Disabled` | The endpoint succeeded to Suspend or failed to Resume. |
 
-> [!Tip]
+> [! Tip]
 > If the status goes to `Failed` or `Disabled` for Resume, you can check the `properties.error` for the detailed error message.
 
 ### Sample request
@@ -174,9 +174,9 @@ Replace the parameters with proper data you found at [Prerequisites](#prerequisi
 
 | Name                        | In     | Required | Type   | Description                                                                    |
 | --------------------------- | ------ | -------- | ------ | ------------------------------------------------------------------------------ |
-| `Region`                    | Path   | `True`   | string | <REGION_IDENTIFIER> - The Azure region the endpoint is associated with.        |
-| `Endpoint_ID`               | Path   | `True`   | string | <Endpoint_ID> - The identifier of the endpoint.                                |
-| `Ocp-Apim-Subscription-Key` | Header | `True`   | string | <YOUR_SUBSCRIPTION_KEY > The subscription key the endpoint is associated with. |
+| `Region` | Path   | `True` | string | <REGION_IDENTIFIER> - The Azure region the endpoint is associated with.        |
+| `Endpoint_ID` | Path   | `True` | string | <Endpoint_ID> - The identifier of the endpoint.                                |
+| `Ocp-Apim-Subscription-Key` | Header | `True` | string | <YOUR_SUBSCRIPTION_KEY > The subscription key the endpoint is associated with. |
 
 ## Response header
 
@@ -184,5 +184,18 @@ Status code: 202 Accepted
 
 | Name          | Type   | Description                                                                      |
 | ------------- | ------ | -------------------------------------------------------------------------------- |
-| `Location`    | string | The location of the endpoint which can be used as the full URL to get endpoint . |
+| `Location` | string | The location of the endpoint which can be used as the full URL to get endpoint . |
 | `Retry-After` | string | The total seconds of recommended interval to retry to get endpoint status.       |
+
+## HTTP status codes
+
+The HTTP status code for each response indicates success or common errors.
+
+| HTTP status code | Description       | Possible reason                                                                                                                                                           |
+| ---------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 200              | OK                | The request was successful.                                                                                                                                               |
+| 202              | Accepted          | The request has been accepted for processing, but the processing has not been completed.                                                                                  |
+| 400              | Bad Request       | A required parameter is missing, empty, or null. Or, the value passed to either a required or optional parameter is invalid. A common issue is a header that is too long. |
+| 401              | Unauthorized      | The request is not authorized. Check to make sure your subscription key or token is valid and in the correct region.                                                      |
+| 429              | Too Many Requests | You have exceeded the quota or rate of requests allowed for your subscription.                                                                                            |
+| 502              | Bad Gateway       | Network or server-side issue. May also indicate invalid headers.                                                                                                          |
